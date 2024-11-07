@@ -1,0 +1,111 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: #0f1923;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0) 10%, rgba(255,0,0,0.1) 20%, rgba(255,0,0,0.05) 80%);
+    animation: background-animation 5s infinite alternate;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes background-animation {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100px 100px;
+    }
+}
+
+#agents-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1;
+    position: relative;
+}
+
+.agent {
+    background-color: #1b2733;
+    border: 2px solid #ff4655;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 20px;
+    width: 220px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 1;
+    position: relative;
+}
+
+.agent:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(255, 70, 85, 0.5);
+}
+
+.agent img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #ff4655;
+}
+
+.agent h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #ffffff;
+}
+
+.agent p {
+    color: #c5c5c5;
+    font-size: 0.9em;
+}
+
+h1 {
+    color: #ff4655;
+    font-size: 2.5em;
+    margin: 30px 0 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    margin-bottom: 20px;
+    border: 2px solid #ff4655;
+    background-color: #1b2733;
+    color: #ffffff;
+    border-radius: 5px;
+    z-index: 1;
+    position: relative;
+}
+
+@keyframes particle-move {
+    0% { transform: translateY(0); opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-800px); opacity: 0; }
+}
+
+.particle {
+    position: fixed;
+    bottom: 0;
+    width: 3px;
+    height: 3px;
+    background-color: rgba(255, 70, 85, 0.8);
+    border-radius: 50%;
+    animation: particle-move 10s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
